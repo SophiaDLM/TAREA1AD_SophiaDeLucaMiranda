@@ -1,9 +1,10 @@
 package modelo;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Estancia {
+public class Estancia implements Serializable {
 	private Long id;
 	private LocalDate fecha;
 	private boolean vip = false;

@@ -1,28 +1,28 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Parada {
+public class Parada implements Serializable {
 	private Long id;
 	private String nombre;
 	private char region;
 	private String responsable;
 		
-	List<Peregrino> listaPeregrinos = new ArrayList<>();
+	List<Peregrino> listaPeregrinos;
 			
 
 	public Parada() {
 		
 	}
 
-	public Parada(Long id, String nombre, char region, String responsable, List<Peregrino> listaPeregrinos) {
+	public Parada(Long id, String nombre, char region, String responsable) {
 		this.id = id;
 		this.nombre = nombre;
 		this.region = region;
 		this.responsable = responsable;
-		this.listaPeregrinos = listaPeregrinos;
 	}
 
 			
@@ -72,10 +72,11 @@ public class Parada {
 		String salida ="";
 		salida += "<< PARADA >>"+"\nID: "+id+"\nNombre: "+nombre+"\nRegión: "+region+"\nResponsable de la parada: "+responsable+"\n";
 		
-		if(listaPeregrinos != null) {
+		if(listaPeregrinos != null && !listaPeregrinos.isEmpty()) {
 			salida += "<< LISTA DE PEREGRINOS >>";
 			for(Peregrino indPeregrino: listaPeregrinos) {
-				salida += indPeregrino.toString();
+				salida += "\nNombre del peregrino: "+indPeregrino.getNombre();
+				//Modficar método toString de Peregrino para el siguiente método
 			}
 		}
 		

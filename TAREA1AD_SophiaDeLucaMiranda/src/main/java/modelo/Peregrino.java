@@ -1,16 +1,17 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Peregrino {
+public class Peregrino implements Serializable {
 	private Long id;
 	private String nombre;
 	private String nacionalidad;
 		
 	private Carnet carnet;
-	List<Parada> listaParadas = new ArrayList<>();
+	List<Parada> listaParadas;
 	List<Estancia> listaEstancias;
 		
 
@@ -18,14 +19,11 @@ public class Peregrino {
 		
 	}
 		
-	public Peregrino(Long id, String nombre, String nacionalidad, Carnet carnet,
-			List<Parada> listaParadas, List<Estancia> listaEstancias) {
+	public Peregrino(Long id, String nombre, String nacionalidad, Carnet carnet) {
 		this.id = id;
 		this.nombre = nombre;
 		this.nacionalidad = nacionalidad;
 		this.carnet = carnet;
-		this.listaParadas = listaParadas;
-		this.listaEstancias = listaEstancias;
 	}
 		
 		
@@ -54,25 +52,36 @@ public class Peregrino {
 		this.nacionalidad = nacionalidad;
 	}
 
+	public Carnet getCarnet() {
+		return carnet;
+	}
+
+	public void setCarnet(Carnet carnet) {
+		this.carnet = carnet;
+	}
+
+	public List<Parada> getListaParadas() {
+		return listaParadas;
+	}
+
+	public void setListaParadas(List<Parada> listaParadas) {
+		this.listaParadas = listaParadas;
+	}
+
+	public List<Estancia> getListaEstancias() {
+		return listaEstancias;
+	}
+
+	public void setListaEstancias(List<Estancia> listaEstancias) {
+		this.listaEstancias = listaEstancias;
+	}
 
 	@Override
 	public String toString() {
 		String salida = "";
-		salida += "<< PEREGRINO >>"+"\nID: "+id+"\nNombre: "+nombre+"\nNacionalidad: "+nacionalidad+"\n"+"\n"+carnet.toString();
-		
-		if(listaParadas != null) {
-			salida += "\n<< LISTA DE PARADAS >>";
-			for(Parada indParada: listaParadas) {
-				salida += "\n"+indParada.toString();
-			}
-		}
-		
-		if(listaEstancias != null) {
-			salida += "\n<< LISTA DE ESTANCIAS >>";
-			for(Estancia indEstancia: listaEstancias) {
-				salida += "\n"+indEstancia.toString();
-			}
-		}
+		salida += "<< PEREGRINO >>"+"\nID: "+id+"\nNombre: "+nombre+"\nNacionalidad: "+nacionalidad+
+				"\nFecha de expedición del carnet: "+carnet.getFechaexp()+"\nNombre de la parada inicial: "+carnet.getParadaInicial().getNombre()+
+				"\nRegión de la parada inicial: "+carnet.getParadaInicial().getRegion();
 	
 		return salida;
 	}
