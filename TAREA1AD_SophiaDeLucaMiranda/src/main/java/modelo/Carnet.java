@@ -4,15 +4,17 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Carnet implements Serializable {
+public class Carnet implements Serializable { //Implementa serializable para poder trabajar con ficheros
+	//Atributos de la clase:
 	private Long id;
 	private LocalDate fechaexp = LocalDate.now();
 	private double distancia = 0.0;
 	private int nvips = 0;
 	
-	private Parada paradaInicial = new Parada();
+	//Representa la relación entre Carnet y Parada del diagrama UML:
+	private Parada paradaInicial;
 		
-
+	//Constructores de la clase:
 	public Carnet() {
 			
 	}
@@ -25,7 +27,7 @@ public class Carnet implements Serializable {
 		this.paradaInicial = paradaInicial;
 	}
 
-			
+	//Métodos Getter y Setter de cada atributo:
 	public Long getId() {
 		return id;
 	}
@@ -66,21 +68,24 @@ public class Carnet implements Serializable {
 		this.paradaInicial = paradaInicial;
 	}
 
-		
+	//Método toString que muestra la información de la clase:
 	@Override
 	public String toString() {
 		String salida = "";
 		salida += "<< CARNET >>"+"\nID: "+id+"\nFecha de expedición: "+fechaexp+"\nDistancia recorrida: "+
-		distancia+"km"+"\nNúmero de estancias V.I.P.: "+nvips+"\nParada inicial: \n"+paradaInicial.toString();
+		distancia+"km"+"\nNúmero de estancias V.I.P.: "+nvips+"\nNombre de la parada inicial: "+paradaInicial.getNombre()+
+		"\nRegión de la parada inicial: "+paradaInicial.getRegion();
 	
 		return salida;
 	}
 
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(distancia, fechaexp, id, nvips, paradaInicial);
 	}
 
+	//Método equals que sirve para comparar dos objetos de la misma clase mediante sus atributos:
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

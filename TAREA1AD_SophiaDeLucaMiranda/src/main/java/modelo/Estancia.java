@@ -4,14 +4,16 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Estancia implements Serializable {
+public class Estancia implements Serializable { //Implementa serializable para poder trabajar con ficheros en la próxima entrega
+	//Atributos de la clase:
 	private Long id;
 	private LocalDate fecha;
 	private boolean vip = false;
 
+	//Representa la relación entre Estancia y Parada del diagrama UML:
 	private Parada parada;
 	
-
+	//Constructores de la clase:
 	public Estancia() {
 		
 	}
@@ -23,7 +25,7 @@ public class Estancia implements Serializable {
 		this.parada = parada;
 	}
 		
-
+	//Métodos Getter y Setter de cada atributo:
 	public Long getId() {
 		return id;
 	}
@@ -56,7 +58,7 @@ public class Estancia implements Serializable {
 		this.parada = parada;
 	}
 
-		
+	//Método toString que muestra la información de la clase:
 	@Override
 	public String toString() {
 		String salida = "";
@@ -65,11 +67,13 @@ public class Estancia implements Serializable {
 		return salida;
 	}
 
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(fecha, id, parada, vip);
 	}
 
+	//Método equals que sirve para comparar dos objetos de la misma clase mediante sus atributos:
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

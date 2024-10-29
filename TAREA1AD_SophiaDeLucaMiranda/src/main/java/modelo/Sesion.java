@@ -1,9 +1,10 @@
 package modelo;
 
 public class Sesion {
+	//Atributos de la clase:
 	private Perfil perfilUsuario;
 	
-	
+	//Constructores de la clase:
 	public Sesion() {
 		
 	}
@@ -12,7 +13,7 @@ public class Sesion {
 		this.perfilUsuario = perfilUsuario;
 	}
 
-	
+	//Métodos Getter y Setter de la clase:
 	public Perfil getPerfilUsuario() {
 		return perfilUsuario;
 	}

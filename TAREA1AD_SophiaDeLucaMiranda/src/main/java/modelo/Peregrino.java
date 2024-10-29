@@ -5,16 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Peregrino implements Serializable {
+public class Peregrino implements Serializable { //Implementa serializable para poder trabajar con ficheros
+	//Atributos de la clase:
 	private Long id;
 	private String nombre;
 	private String nacionalidad;
-		
+	
+	//Representa las relaciones entre Peregrino y las demás clases del diagrama UML:
 	private Carnet carnet;
 	List<Parada> listaParadas;
 	List<Estancia> listaEstancias;
 		
-
+	//Constructores de la clase:
 	public Peregrino() {
 		
 	}
@@ -24,10 +26,9 @@ public class Peregrino implements Serializable {
 		this.nombre = nombre;
 		this.nacionalidad = nacionalidad;
 		this.carnet = carnet;
-	}
+	} //Se ha evitado pasar las listas como parámetros para facilitar su uso
 		
-		
-
+	//Métodos Getter y Setter de cada atributo:	
 	public Long getId() {
 		return id;
 	}
@@ -76,6 +77,7 @@ public class Peregrino implements Serializable {
 		this.listaEstancias = listaEstancias;
 	}
 
+	//Método toString que muestra la información de la clase:
 	@Override
 	public String toString() {
 		String salida = "";
@@ -86,11 +88,13 @@ public class Peregrino implements Serializable {
 		return salida;
 	}
 
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(carnet, id, listaEstancias, listaParadas, nacionalidad, nombre);
 	}
 
+	//Método equals que sirve para comparar dos objetos de la misma clase mediante sus atributos:
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
